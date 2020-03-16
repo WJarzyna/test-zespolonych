@@ -22,8 +22,9 @@ struct  LZespolona {
  * Dalej powinny pojawic sie zapowiedzi definicji przeciazen operatorow
  */
 
+std::ostream & operator << (std::ostream &str, LZespolona in)
+std::istream & operator >> (std::istream &str,LZespolona &in)
 
-void print(LZespolona in);
 LZespolona make(double re, double im);
 LZespolona  operator + (LZespolona  Skl1,  LZespolona  Skl2);
 LZespolona  operator - (LZespolona  Skl1,  LZespolona  Skl2);

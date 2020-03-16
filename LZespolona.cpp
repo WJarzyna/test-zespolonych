@@ -3,34 +3,29 @@
 using std::cout;
 using std::cin;
 
-void print(LZespolona in)
+std::ostream & operator << (std::ostream &str, LZespolona in)
 {
-  cout << '(' << in.re << std::showpos << in.im << std::noshowpos << "i)";
+  str << '(' << in.re << std::showpos << in.im << std::noshowpos << "i)";
 }
 
 
-
-
-
-
-
-
-int get(LZespolona &in)
+std::istream & operator >> (std::istream &str,LZespolona &in)
 {
   char znak;
-  cin>>znak;
-  if(znak!='(')return -1;
-  cin>>in.re;
-  cin>>in.im;
-  cin>>znak;
-  if(znak!='i')return -1;
-  cin>>znak;
-  if(znak!=')')return -1;
-  return 0;
+  str>>znak;
+  if(znak!='(')str.setstate(std::ios::failbit);
+  str>>in.re;
+  str>>in.im;
+  str>>znak;
+  if(znak!='i')str.setstate(std::ios::failbit);
+  str>>znak;
+  if(znak!=')')str.setstate(std::ios::failbit);
 }
 
-//
-//int getexp(
+
+//bool getexp(WZesp &in)
+//{
+  
 
 
 
@@ -95,3 +90,9 @@ LZespolona  operator / (LZespolona  Skl1,  LZespolona  Skl2)
 {
   return ( Skl1 * sprzeg(Skl2)  ) / ( modul(Skl2) * modul(Skl2) );
 }
+ 
+/*
+klasa lz na operatorach
+klasa wyrazenia
+konwersja znak->enum
+*/
