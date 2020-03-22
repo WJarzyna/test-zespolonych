@@ -1,11 +1,9 @@
 #include "LZespolona.hh"
 
-using std::cout;
-using std::cin;
-
 std::ostream & operator << (std::ostream &str, LZespolona in)
 {
   str << '(' << in.re << std::showpos << in.im << std::noshowpos << "i)";
+  return str;
 }
 
 
@@ -20,15 +18,8 @@ std::istream & operator >> (std::istream &str,LZespolona &in)
   if(znak!='i')str.setstate(std::ios::failbit);
   str>>znak;
   if(znak!=')')str.setstate(std::ios::failbit);
+  return str;
 }
-
-
-//bool getexp(WZesp &in)
-//{
-  
-
-
-
 
 
 
@@ -91,8 +82,3 @@ LZespolona  operator / (LZespolona  Skl1,  LZespolona  Skl2)
   return ( Skl1 * sprzeg(Skl2)  ) / ( modul(Skl2) * modul(Skl2) );
 }
  
-/*
-klasa lz na operatorach
-klasa wyrazenia
-konwersja znak->enum
-*/

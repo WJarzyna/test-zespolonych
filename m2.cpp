@@ -1,22 +1,19 @@
 #include <iostream>
 #include "LZespolona.cpp"
+#include "WyrazenieZesp.cpp"
 
 using std::cin;
+using std::cout;
 
 int main(void)
 {
-  LZespolona num;
-  if(get(num))return -1;
-  
-  print(num);
-  LZespolona dos=num*num;
-  print(num*num);
-  print(dos+num);
-  print(num-dos);
-  print(dos*num);
-  print(num/dos);
+  WZesp wyr;
+
+  cout<<"Podaj wyrazenie\n";
+  get_exp(wyr);
+  cout<<'\n';
+  show(wyr);
+  cout<<'='<<Oblicz(wyr);
 }
 
-/*
-dzialajace zespolone(z funkcjami wysw, wczyt
-*/
+
