@@ -21,6 +21,12 @@ std::istream & operator >> (std::istream &str,LZespolona &in)
   return str;
 }
 
+bool operator == (LZespolona arg1, LZespolona arg2)
+{
+  if(arg1.re==arg2.re&&arg1.im==arg2.im) return true;
+  else return false;
+}
+
 
 
 

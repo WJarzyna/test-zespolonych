@@ -1,10 +1,12 @@
 #include "WyrazenieZesp.hh"
 using std::cout;
 
-void show(WZesp WyrZ)
+
+std::ostream & operator << (std::ostream &str, WZesp in)
 {
   char op[]={'+','-','*','/'};
-  cout<<WyrZ.Arg1<<op[WyrZ.Op]<<WyrZ.Arg2;
+  str<<in.Arg1<<op[in.Op]<<in.Arg2;
+  return str;
 }
 
 LZespolona Oblicz(WZesp WyrZ)
@@ -34,8 +36,18 @@ void get_exp(WZesp &exp)
   cin>>exp.Arg2;
 }
 
-  
-/*
- * Tu nalezy zdefiniowac funkcje, ktorych zapowiedzi znajduja sie
- * w pliku naglowkowym.
- */
+std::istream & operator >> (std::istream &str, WZesp &exp)
+{
+  char c;
+  str>>exp.Arg1;
+  str>>c;
+  switch(c)
+    {
+    case '+':exp.Op=Op_Dodaj;break;
+    case '-':exp.Op=Op_Odejmij;break;
+    case '*':exp.Op=Op_Mnoz;break;
+    case '/':exp.Op=Op_Dziel;break;
+    }
+  str>>exp.Arg2;
+  return str;
+}

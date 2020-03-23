@@ -10,10 +10,12 @@ int main(void)
   WZesp wyr;
 
   cout<<"Podaj wyrazenie\n";
-  get_exp(wyr);
+  cin>>wyr;
+
+  if(wyr.Arg1==wyr.Arg2)cout<<"Rowne!";
+  
   cout<<'\n';
-  show(wyr);
-  cout<<'='<<Oblicz(wyr);
+  cout<<wyr<<'='<<Oblicz(wyr);
 }
 
 
