@@ -28,12 +28,15 @@ struct  LZespolona {
 std::ostream & operator << (std::ostream &str, LZespolona in);
 std::istream & operator >> (std::istream &str,LZespolona &in);
 
+bool operator == (LZespolona arg1, LZespolona arg2);
+
 LZespolona make(double re, double im);
 LZespolona  operator + (LZespolona  Skl1,  LZespolona  Skl2);
 LZespolona  operator - (LZespolona  Skl1,  LZespolona  Skl2);
 LZespolona  operator * (LZespolona  Skl1,  LZespolona  Skl2);
 LZespolona sprzeg(LZespolona in);
 double modul(LZespolona in);
+LZespolona  operator / (LZespolona  Skl1, double  div);
 LZespolona  operator / (LZespolona  Skl1,  LZespolona  Skl2);
 
 

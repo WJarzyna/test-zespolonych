@@ -1,6 +1,7 @@
 #include <iostream>
 #include "LZespolona.cpp"
 #include "WyrazenieZesp.cpp"
+#include "stat.cpp"
 
 using std::cin;
 using std::cout;
@@ -16,6 +17,9 @@ int main(void)
   
   cout<<'\n';
   cout<<wyr<<'='<<Oblicz(wyr);
+  stat st;
+  init_stat(st);
+  cout<<st;
 }
 
 

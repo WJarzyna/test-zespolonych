@@ -21,33 +21,21 @@ LZespolona Oblicz(WZesp WyrZ)
     }
 }
 
-void get_exp(WZesp &exp)
-{
-  char c;
-  cin>>exp.Arg1;
-  cin>>c;
-  switch(c)
-    {
-    case '+':exp.Op=Op_Dodaj;break;
-    case '-':exp.Op=Op_Odejmij;break;
-    case '*':exp.Op=Op_Mnoz;break;
-    case '/':exp.Op=Op_Dziel;break;
-    }
-  cin>>exp.Arg2;
-}
-
 std::istream & operator >> (std::istream &str, WZesp &exp)
 {
   char c;
   str>>exp.Arg1;
   str>>c;
+  
   switch(c)
     {
     case '+':exp.Op=Op_Dodaj;break;
     case '-':exp.Op=Op_Odejmij;break;
     case '*':exp.Op=Op_Mnoz;break;
     case '/':exp.Op=Op_Dziel;break;
+    default: str.setstate(std::ios::failbit);
     }
+  
   str>>exp.Arg2;
   return str;
 }
