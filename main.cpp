@@ -33,19 +33,33 @@ int main(int argc, char* argv[])
 	  cerr<<"Blad w pytaniu";
 	  file.clear();
 	}
-      
-      cout<<wyr<<'='<<'\n';
-      cin>>ans;
-      if(ans==Oblicz(wyr))
-	{
-	  add_good(st);
-	  cout<<"Poprawna odpowiedz"<<'\n';
-	}
-      
+
       else
 	{
-	  add_bad(st);
-	  cout<<"Bledna odpowiedz"<<'\n';
+	  cout<<wyr<<'='<<'\n';
+	  cin>>ans;
+	  
+	  if(!cin.good())
+	    {
+	      cerr<<"Blad w odpowiedzi"<<'\n';
+	      cin.clear();
+	      add_bad(st);
+	    }
+	  
+	  else
+	    {
+	      if(ans==Oblicz(wyr))
+		{
+		  add_good(st);
+		  cout<<"Poprawna odpowiedz"<<'\n';
+		}
+	      
+	      else
+		{
+		  add_bad(st);
+		  cout<<"Bledna odpowiedz"<<'\n';
+		}
+	    }
 	}
     }
   file.close();
