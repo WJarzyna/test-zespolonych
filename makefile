@@ -15,4 +15,4 @@ clean:
 	rm *.o *~
 
 del:
-	rm imager_v3.x
+	rm testz.x
