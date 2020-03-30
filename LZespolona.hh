@@ -1,6 +1,8 @@
 #ifndef LZESPOLONA_HH
 #define LZESPOLONA_HH
 
+#include <iostream>
+
 using std::cout;
 using std::cin;
 

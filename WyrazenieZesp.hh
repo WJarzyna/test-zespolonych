@@ -30,8 +30,9 @@ struct WZesp {
  */
 
 
-void show(WZesp  WyrZ);
-LZespolona Oblicz(WZesp  WyrZ);
 
+std::ostream & operator << (std::ostream &str, WZesp in);
+LZespolona Oblicz(WZesp WyrZ);
+std::istream & operator >> (std::istream &str, WZesp &exp);
 
 #endif

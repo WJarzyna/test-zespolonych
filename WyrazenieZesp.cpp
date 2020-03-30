@@ -1,5 +1,6 @@
 #include "WyrazenieZesp.hh"
-using std::cout;
+
+using std::cerr;
 
 
 std::ostream & operator << (std::ostream &str, WZesp in)
@@ -17,7 +18,7 @@ LZespolona Oblicz(WZesp WyrZ)
     case Op_Odejmij: return WyrZ.Arg1-WyrZ.Arg2;
     case Op_Mnoz: return WyrZ.Arg1*WyrZ.Arg2;
     case Op_Dziel: return WyrZ.Arg1/WyrZ.Arg2;
-    default: cout<<"Bledna operacja";return make(0,0);
+    default: cerr<<"Bledna operacja";return make(0,0);
     }
 }
 

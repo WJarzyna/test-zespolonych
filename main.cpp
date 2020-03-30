@@ -1,46 +1,55 @@
 #include <iostream>
-#include "BazaTestu.hh"
+#include "WyrazenieZesp.hh"
+#include "stat.hh"
+#include "test.hh"
 
-using namespace std;
+using std::cin;
+using std::cout;
+using std::cerr;
 
-
-
-
-int main(int argc, char **argv)
+int main(int argc, char* argv[])
 {
+  std::ifstream file;
 
-  if (argc < 2) {
-    cout << endl;
-    cout << " Brak opcji okreslajacej rodzaj testu." << endl;
-    cout << " Dopuszczalne nazwy to:  latwy, trudny." << endl;
-    cout << endl;
-    return 1;
-  }
-
-
-  BazaTestu   BazaT = { nullptr, 0, 0 };
-
-  if (InicjalizujTest(&BazaT,argv[1]) == false) {
-    cerr << " Inicjalizacja testu nie powiodla sie." << endl;
-    return 1;
-  }
-
+  if(!set_test(argv[1],file))
+    {
+      cerr<<"Blad testu";
+      return -1;
+    }
+    
+  WZesp wyr;
+  LZespolona ans;
+  stat st;
 
   
-  cout << endl;
-  cout << " Start testu arytmetyki zespolonej: " << argv[1] << endl;
-  cout << endl;
-
-  WyrazenieZesp   WyrZ_PytanieTestowe;
-  
-  while (PobierzNastpnePytanie(&BazaT,&WyrZ_PytanieTestowe)) {
-    cout << " Czesc rzeczywista pierwszego argumentu: ";
-    cout << WyrZ_PytanieTestowe.Arg1.re << endl;
-  }
+  init_stat(st);
 
   
-  cout << endl;
-  cout << " Koniec testu" << endl;
-  cout << endl;
-
+  cout<<"Rozpoczynam test: "<<argv[1]<<'\n';
+  while(getq(file,wyr))
+    {
+      if(!file.good())
+	{
+	  cerr<<"Blad w pytaniu";
+	  file.clear();
+	}
+      
+      cout<<wyr<<'='<<'\n';
+      cin>>ans;
+      if(ans==Oblicz(wyr))
+	{
+	  add_good(st);
+	  cout<<"Poprawna odpowiedz"<<'\n';
+	}
+      
+      else
+	{
+	  add_bad(st);
+	  cout<<"Bledna odpowiedz"<<'\n';
+	}
+    }
+  file.close();
+  cout<<st;
 }
+
+
